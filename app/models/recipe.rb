@@ -1,6 +1,6 @@
 class Recipe < ActiveRecord::Base
-	has_many :ingredients
-	has_many :directions
+	has_many :ingredients, :dependent => :delete_all
+	has_many :directions, :dependent => :delete_all
 
 	accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 	accepts_nested_attributes_for :directions, reject_if: :all_blank, allow_destroy: true
